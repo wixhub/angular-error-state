@@ -1,16 +1,31 @@
-<form [formGroup]="form" #formDirective="ngForm" [ngClass]="[formStyle]" (ngSubmit)="onSubmit(form, formDirective)">
+<form
+  [formGroup]="form"
+  #formDirective="ngForm"
+  [ngClass]="[formStyle]"
+  (ngSubmit)="onSubmit(form, formDirective)"
+>
   <mat-label class="titleText">{{ titleText }}</mat-label>
   <mat-hint class="titleHint">{{ titleHint }}</mat-hint>
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput [errorStateMatcher]="matcher" formControlName="name" type="text" />
+    <input
+      matInput
+      [errorStateMatcher]="matcher"
+      formControlName="name"
+      type="text"
+    />
     <mat-error *ngIf="form.controls.name.hasError('required') || matcher">
       It is required field
     </mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Email</mat-label>
-    <input matInput [errorStateMatcher]="matcher" formControlName="email" type="email" />
+    <input
+      matInput
+      [errorStateMatcher]="matcher"
+      formControlName="email"
+      type="email"
+    />
     <mat-error *ngIf="form['controls'].email.hasError('required') || matcher">
       Email is required
     </mat-error>

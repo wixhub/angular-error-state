@@ -23,10 +23,6 @@ export class CustomStateMatcher implements ErrorStateMatcher {
   }
 }
 
-// this.form.updateOn == change
-// https://stackoverflow.com/questions/48216330/angular-5-formgroup-reset-doesnt-reset-validators?answertab=votes#tab-top
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
