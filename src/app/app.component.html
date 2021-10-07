@@ -1,0 +1,45 @@
+<form [formGroup]="form" #formDirective="ngForm" [ngClass]="[formStyle]" (ngSubmit)="onSubmit(form, formDirective)">
+  <mat-label class="titleText">{{ titleText }}</mat-label>
+  <mat-hint class="titleHint">{{ titleHint }}</mat-hint>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [errorStateMatcher]="matcher" formControlName="name" type="text" />
+    <mat-error *ngIf="form.controls.name.hasError('required') || matcher">
+      It is required field
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [errorStateMatcher]="matcher" formControlName="email" type="email" />
+    <mat-error *ngIf="form['controls'].email.hasError('required') || matcher">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="form['controls'].email.hasError('email')">
+      Please provide a valid email address
+    </mat-error>
+  </mat-form-field>
+  <div class="row">
+    <div><mat-label>Show Errors as</mat-label></div>
+    <div>
+      <input
+        type="radio"
+        value="default"
+        name="showError"
+        (click)="switchErrorMode('default')"
+        [checked]="false"
+      />Default
+    </div>
+    <div>
+      <input
+        type="radio"
+        value="matcher"
+        name="showError"
+        (click)="switchErrorMode('matcher')"
+        [checked]="true"
+      />StateMatcher
+    </div>
+  </div>
+  <button type="submit" mat-raised-button [color]="[btnStyle]">
+    {{ btnText }}
+  </button>
+</form>
